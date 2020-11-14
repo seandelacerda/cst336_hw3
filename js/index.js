@@ -114,7 +114,8 @@ $(document).ready(function() {
         
         if (!Number.isInteger(episode) || episode < 1 || episode > 41) {
             $("#episodeError").html("Episode must be an integer between 1-41");
-            $("#episodeError").css("color", "red");
+            $("#episodeError").css("color", "#6f33fd");
+            $("#episodeError").css("font-weight", "bold");
             
             return;
         }

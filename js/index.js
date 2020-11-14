@@ -4,9 +4,6 @@ $(document).ready(function() {
     $("#characterInput").hide();
     $("#image").hide();
     
-    $("#searchForm").on("submit", function() {
-        event.preventDefault();
-    });
     
     // get locations onload
     getLocationOptions();
@@ -15,6 +12,7 @@ $(document).ready(function() {
     $('input[type=radio][name=searchBy]').change(function() {
         if (this.value == 'episode') {
             $("#episodeInput").show();
+            $("#searchEpisode").show();
             $("#locationInput").hide();
             $("#characterInput").hide();
         }
@@ -22,7 +20,9 @@ $(document).ready(function() {
             $("#locationInput").show();
             $("#characterInput").show();
             $("#episodeInput").hide();
+            $("#searchEpisode").hide();
         }
+        $("#image").hide();
     });
     
     // helper function to fetch api results
@@ -57,6 +57,10 @@ $(document).ready(function() {
                 $("#location").append(`<option value="${i.name}"> ${i.name} </option>`);
             });
         }
+        
+        let location = $("#location").val();
+        
+        await getCharacters('location', location);
     }
     
     async function getCharacters(type, source) {
@@ -75,8 +79,7 @@ $(document).ready(function() {
                     $("#character").append(`<option value="${character.id}"> ${character.name} </option>`);
                 }
             }
-            
-            $("#characterInput").show();   
+            $("#characterInput").show();
         } else if (type == 'location') {
             let url = `https://rickandmortyapi.com/api/location/?name=${source}`;
             let response = await fetch(url);
@@ -92,8 +95,6 @@ $(document).ready(function() {
                     $("#character").append(`<option value="${character.id}"> ${character.name} </option>`);
                 }
             }
-            
-            $("#characterInput").show();   
         }
     }
     
@@ -112,10 +113,11 @@ $(document).ready(function() {
     
     $("#location").on("change", async function() {
         let location = $("#location").val();
-        ;
+        
         await getCharacters('location', location);
     });
-
+    
+    // display character on submit
     $("#searchForm").on("submit", async function() {
         event.preventDefault();
         let character = $("#character").val();
@@ -123,6 +125,11 @@ $(document).ready(function() {
         let result = await getData(url);
         
         $("#image").attr("src",`${result.image}`);
+        $("#image").attr("alt",`Picture of ${result.name}`);
+        $("#imageCaption").text(result.name);
+        $("#status").text(`Status: ${result.status}`);
+        $("#species").text(`Species: ${result.species}`);
+        $("#gender").text(`Gender: ${result.gender}`);
         $("#image").show();
     });
 });

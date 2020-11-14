@@ -37,7 +37,7 @@
             <span id="episodeError"></span>
         </div>
 
-        <button class="btn btn-secondary" id="searchEpisode">Search Episode</button>
+        <button type="button" class="btn btn-secondary" id="searchEpisode">Search Episode</button>
 
         <div class="form-group" id="locationInput">
             <label for="location">Location</label>
@@ -51,8 +51,13 @@
 
         <button type="submit" class="btn btn-primary">See Character</button>
     </form>
-    
-    <img id="image" src="" alt="" class="img-thumbnail">
+    <figure>
+        <img id="image" src="" alt="" class="img-thumbnail">
+        <figcaption id="imageCaption"></figcaption>
+        <p id="status"></p>
+        <p id="species"></p>
+        <p id="gender"></p>
+    </figure>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/index.js"></script>
 </body>

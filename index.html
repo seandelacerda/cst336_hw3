@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <div id="content">
     <h1>Ricky and Morty Reference</h1>
     <form id="searchForm" class="container">
         <fieldset class="form-group">
@@ -29,7 +30,7 @@
                 </div>
             </div>
         </fieldset>
-        <div id="content"></div>
+        
 
         <div class="form-group" id="episodeInput">
             <label for="episode">Episode</label>
@@ -49,15 +50,18 @@
             <select id="character" name="character" class="form-control"></select>
         </div>
 
-        <button type="submit" class="btn btn-primary">See Character</button>
+        <button id="showCharacter" type="submit" class="btn btn-primary">See Character</button>
     </form>
-    <figure>
-        <img id="image" src="" alt="" class="img-thumbnail">
-        <figcaption id="imageCaption"></figcaption>
-        <p id="status"></p>
-        <p id="species"></p>
-        <p id="gender"></p>
+    <div class="card bg-info text-white" id="imageCard">
+        <img id="image" src="" alt="" class="card-img-top">
+        <div class="card-body">
+            <p id="imageCaption" class="card-text"></figcaption>
+            <p id="status" class="card-text"></p>
+            <p id="species" class="card-text"></p>
+            <p id="gender" class="card-text"></p>
+        </div>
     </figure>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/index.js"></script>
 </body>

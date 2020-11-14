@@ -1,8 +1,6 @@
 $(document).ready(function() {
     // show name and hide location and character inputs by default
-    $("#locationInput").hide();
-    $("#characterInput").hide();
-    $("#image").hide();
+    hideFields();
     
     
     // get locations onload
@@ -11,19 +9,32 @@ $(document).ready(function() {
     // display appropriate search based on radio selection
     $('input[type=radio][name=searchBy]').change(function() {
         if (this.value == 'episode') {
+            hideFields();
             $("#episodeInput").show();
             $("#searchEpisode").show();
             $("#locationInput").hide();
             $("#characterInput").hide();
         }
         else if (this.value == 'location') {
+            hideFields();
             $("#locationInput").show();
             $("#characterInput").show();
+            $("#showCharacter").show();
             $("#episodeInput").hide();
             $("#searchEpisode").hide();
         }
-        $("#image").hide();
     });
+    
+    function hideFields() {
+        $("#locationInput").hide();
+        $("#characterInput").hide();
+        $("#imageCard").hide();
+        $("#imageCaption").hide();
+        $("#status").hide();
+        $("#species").hide();
+        $("#gender").hide();
+        $("#showCharacter").hide();
+    }
     
     // helper function to fetch api results
     async function getData(url) {
@@ -109,6 +120,7 @@ $(document).ready(function() {
         }
         
         await getCharacters('episode', episode);
+        $("#showCharacter").show();
     });
     
     $("#location").on("change", async function() {
@@ -126,10 +138,10 @@ $(document).ready(function() {
         
         $("#image").attr("src",`${result.image}`);
         $("#image").attr("alt",`Picture of ${result.name}`);
-        $("#imageCaption").text(result.name);
-        $("#status").text(`Status: ${result.status}`);
-        $("#species").text(`Species: ${result.species}`);
-        $("#gender").text(`Gender: ${result.gender}`);
-        $("#image").show();
+        $("#imageCaption").text(result.name).show();
+        $("#status").text(`Status: ${result.status}`).show();
+        $("#species").text(`Species: ${result.species}`).show();
+        $("#gender").text(`Gender: ${result.gender}`).show();
+        $("#imageCard").show();
     });
 });

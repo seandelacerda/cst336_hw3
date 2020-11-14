@@ -1,0 +1,49 @@
+body {
+    background-image: url("../img/rickandmortybg.jpg");
+    background-size: cover;
+    height: 100vh;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+#content {
+    background: rgba(253, 51, 92,.7);
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+  #content {
+    width: 80%;
+  }
+}
+
+.btn-primary, .btn-primary:hover {
+    background-color: #6f33fd !important;
+    border-color: #6f33fd !important;
+}
+
+.btn-primary:hover {
+  background-color: #4e23b3 !important;
+  border-color: #4e23b3 !important;
+}
+
+.card {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.card p {
+    margin: 0;
+}
